@@ -6,13 +6,13 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 18:16:35 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/09 18:37:17 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/13 11:58:41 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putstr_fd(char	*s, int	fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 

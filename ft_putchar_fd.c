@@ -6,13 +6,13 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 18:02:56 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/12 20:32:24 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/13 11:57:50 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar_fd(char	c, int	fd)
+void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
