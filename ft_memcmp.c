@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/12 21:47:23 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/13 13:16:01 by merlich          ###   ########.fr       */
+/*   Created: 2021/10/13 19:15:13 by merlich           #+#    #+#             */
+/*   Updated: 2021/10/13 19:48:36 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-size_t	ft_strlen(const char *s)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
+	int				res;
+	size_t			i;
+	unsigned char	*p1;
+	unsigned char	*p2;
 
+	res = 0;
 	i = 0;
-	while (s[i] != '\0')
+	p1 = (unsigned char *) s1;
+	p2 = (unsigned char *) s2;
+	while ((p1[i] != '\0') && (p2[i] != '\0') && (i < n))
 	{
-		i++;
-	}
-	return (i);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	size_t	i;
-	char	*r;
-
-	i = 0;
-	r = NULL;
-	while (i <= ft_strlen(s))
-	{
-		if (s[i] == c)
+		if (p1[i] != p2[i])
 		{
-			r = (char *)s + i;
-			return (r);
+			res = p1[i] - p2[i];
+			break ;
 		}
 		i++;
 	}
-	return (r);
+	return (res);
 }
