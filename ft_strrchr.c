@@ -6,13 +6,13 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:17:52 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/13 15:06:03 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/14 14:20:29 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_strlen(const char *s)
+static int	ft_strlen(const char *s)
 {
 	int	i;
 
