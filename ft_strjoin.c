@@ -6,21 +6,33 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 15:22:42 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/07 16:01:33 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/16 20:56:34 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
+static size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
 char	*ft_strjoin(char const	*s1, char const	*s2)
 {
-	char	*new_str;
 	size_t	i;
 	size_t	j;
+	char	*new_str;
 
 	i = 0;
 	j = 0;
-	new_str = malloc(sizeof(s1) + sizeof(s2));
+	new_str = malloc(ft_strlen(s1) + ft_strlen(s2));
 	if (NULL == new_str)
 		return (NULL);
 	else
@@ -36,6 +48,7 @@ char	*ft_strjoin(char const	*s1, char const	*s2)
 			i++;
 			j++;
 		}
+		new_str[i] = '\0';
 		return (new_str);
 	}
 }

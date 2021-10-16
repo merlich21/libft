@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:50:30 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/14 20:33:27 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/16 11:41:00 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,31 @@ static size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t n)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t		i;
 	size_t		j;
-	size_t		len_s2;
+	size_t		slen;
 	char		*ptr;
 
 	i = 0;
 	j = 0;
-	len_s2 = ft_strlen(s2);
+	slen = ft_strlen(needle);
 	ptr = NULL;
-	while ((s1[i] != '\0') && (i < n) && (s2[j] != '\0') && (len_s2 != 0))
+	while ((haystack[i] != '\0') && (i < len) && (needle[j] != '\0') && (slen))
 	{
-		if (s2[j] == s1[i])
+		if (needle[j] == haystack[i])
 		{
-			ptr = (char *) s1 + i;
+			ptr = (char *) haystack + i;
 			j++;
 		}
 		else
 			j = 0;
 		i++;
 	}
-	if (len_s2 == 0)
-		ptr = ((char *)(s1));
-	else if ((len_s2 != 0) && (j == len_s2))
-		ptr = ptr - len_s2 + 1;
+	if (slen == 0)
+		ptr = ((char *)(haystack));
+	else if ((slen != 0) && (j == slen))
+		ptr = ptr - slen + 1;
 	return (ptr);
 }

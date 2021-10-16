@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 18:51:08 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/11 16:11:43 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/16 19:44:16 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,26 @@ static char	*ft_putnbr(int n, char *ptr)
 char	*ft_itoa(int n)
 {
 	int		len;
+	char	*int_min;
 	char	*str;
 
 	len = ft_int_len(n);
+	int_min = "-2147483648";
 	str = malloc(len + 1);
 	if (NULL == str)
 		return (NULL);
 	else
 	{
 		if (n == -2147483648)
-			return ("-2147483648");
-		ft_putnbr(n, str);
+		{
+			while (len > 0)
+			{
+				str[len - 1] = int_min[len - 1];
+				len--;
+			}
+		}
+		else
+			ft_putnbr(n, str);
 		return (str);
 	}
 }

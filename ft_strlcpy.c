@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 18:44:50 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/12 20:28:25 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/16 23:30:17 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 
 	i = 0;
-	if (dstsize > 0)
+	if (dstsize != 0)
 	{
-		while (i < (dstsize - 1))
+		while ((i < dstsize - 1) && (src[i] != '\0'))
 		{
 			dst[i] = src[i];
 			i++;

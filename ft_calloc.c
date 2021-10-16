@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 13:02:07 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/15 15:45:32 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/16 21:40:01 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,20 @@ static void	*ft_memset(void *s, int c, size_t n)
 	return (s);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
 	size_t	len;
 	void	*ptr;
 
-	len = nmemb * size;
-	if (nmemb == 0 || size == 0)
+	len = count * size;
+	ptr = malloc(len);
+	if (NULL == ptr)
 	{
-		ptr = NULL;
+		return (NULL);
 	}
 	else
 	{
-		ptr = malloc(len);
-		if (NULL == ptr)
-		{
-			return (NULL);
-		}
-		else
-		{
-			ptr = ft_memset(ptr, '\0', len);
-		}
+		ptr = ft_memset(ptr, '\0', len);
 	}
 	return (ptr);
 }
