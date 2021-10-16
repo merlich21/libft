@@ -6,37 +6,37 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 13:37:37 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/15 21:14:09 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/16 11:14:03 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t		start;
 	size_t		stop;
 	int			step;
 
-	if (dest != src)
+	if (dst != src)
 	{
-		if (dest > src)
+		if (dst > src)
 		{
-			start = n - 1;
+			start = len - 1;
 			step = -1;
 			stop = -1;
 		}
-		if (dest < src)
+		if (dst < src)
 		{
 			start = 0;
 			step = 1;
-			stop = n;
+			stop = len;
 		}
 		while (start != stop)
 		{
-			((char *)(dest))[start] = ((const char *)(src))[start];
+			((char *)(dst))[start] = ((const char *)(src))[start];
 			start += step;
 		}
 	}
-	return (dest);
+	return (dst);
 }

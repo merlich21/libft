@@ -6,13 +6,13 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:51:46 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/13 11:23:16 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/16 11:12:48 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t		i;
 	const char	*src1;
@@ -20,11 +20,11 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 
 	i = 0;
 	src1 = (const char *)src;
-	dest1 = (char *)dest;
+	dest1 = (char *)dst;
 	while (i < n)
 	{
 		dest1[i] = src1[i];
 		i++;
 	}
-	return (dest);
+	return (dst);
 }

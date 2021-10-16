@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:16:03 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/08 11:09:05 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/16 14:15:50 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strtrim(char const	*s1, char const	*set)
 	min = 0;
 	max = 0;
 	n = 0;
-	trim_str = malloc(sizeof(s1));
+	trim_str = malloc(ft_strlen(s1));
 	if (NULL == trim_str)
 		return (NULL);
 	else

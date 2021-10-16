@@ -6,28 +6,28 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 20:34:31 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/15 13:01:23 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/16 11:23:06 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static void	ft_isspace(const char *nptr, int *i)
+static void	ft_isspace(const char *str, int *i)
 {
-	while (nptr[*i] == ' ' || nptr[*i] == '\f' || nptr[*i] == '\n' || \
-			nptr[*i] == '\r' || nptr[*i] == '\t' || nptr[*i] == '\v')
+	while (str[*i] == ' ' || str[*i] == '\f' || str[*i] == '\n' || \
+			str[*i] == '\r' || str[*i] == '\t' || str[*i] == '\v')
 	{
 		*i = *i + 1;
 	}
 	return ;
 }
 
-static void	ft_issign(const char *nptr, int *i, int *flag_sign)
+static void	ft_issign(const char *str, int *i, int *flag_sign)
 {
-	if (nptr[*i] == '-')
+	if (str[*i] == '-')
 	{
 		*flag_sign = -1;
 		*i = *i + 1;
 	}
-	else if (nptr[*i] == '+')
+	else if (str[*i] == '+')
 	{
 		*flag_sign = 1;
 		*i = *i + 1;
@@ -35,17 +35,17 @@ static void	ft_issign(const char *nptr, int *i, int *flag_sign)
 	return ;
 }
 
-static void	ft_isdigit(const char *nptr, int *i, long long *res)
+static void	ft_isdigit(const char *str, int *i, long long *res)
 {
-	while (nptr[*i] >= '0' && nptr[*i] <= '9')
+	while (str[*i] >= '0' && str[*i] <= '9')
 	{
-		*res = *res * 10 + (nptr[*i] - '0');
+		*res = *res * 10 + (str[*i] - '0');
 		*i = *i + 1;
 	}
 	return ;
 }
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *str)
 {
 	int			i;
 	int			flag_sign;
@@ -54,9 +54,9 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	flag_sign = 1;
 	res = 0;
-	ft_isspace(nptr, &i);
-	ft_issign(nptr, &i, &flag_sign);
-	ft_isdigit(nptr, &i, &res);
+	ft_isspace(str, &i);
+	ft_issign(str, &i, &flag_sign);
+	ft_isdigit(str, &i, &res);
 	res = flag_sign * res;
 	if (res > 2147483647)
 	{
