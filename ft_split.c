@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 12:05:58 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/16 14:10:39 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/17 20:40:42 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ char	**ft_split(char const *s, char c)
 	char	**tab;
 
 	ind = 0;
+	if (NULL == s)
+	{
+		return (NULL);
+	}
 	tab = (char **)malloc(ft_strlen(s) + 2 + sizeof(NULL));
 	if (NULL == tab)
 	{
@@ -81,14 +85,14 @@ static char	*ft_right(char const *s, size_t index)
 	char	*right;
 
 	n = 0;
-	right = (char *)malloc(ft_strlen(s) - index);
+	right = (char *)malloc( - index);
 	if (NULL == right)
 	{
 		return (NULL);
 	}
 	else
 	{
-		while (s[index + 1] != '\0')
+		while (index + 1 < ft_strlen(s))
 		{
 			right[n] = s[index + 1];
 			n++;

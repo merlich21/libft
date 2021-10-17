@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 15:46:50 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/16 11:24:53 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/17 18:06:39 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ static size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s)
 {
+	int		i;
 	int		errsv;
 	char	*ptr;
 
-	ptr = malloc(ft_strlen(s1));
+	i = 0;
+	ptr = malloc(ft_strlen(s) + 1);
 	if (NULL == ptr)
 	{
 		errsv = errno;
@@ -38,7 +40,12 @@ char	*ft_strdup(const char *s1)
 	}
 	else
 	{
-		ptr = (char *) s1;
+		while (s[i] != '\0')
+		{
+			ptr[i] = s[i];
+			i++;
+		}
+		ptr[i] = '\0';
 	}
 	return (ptr);
 }

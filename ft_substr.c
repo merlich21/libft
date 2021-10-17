@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:26:46 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/16 21:34:27 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/17 19:45:56 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*sub_str;
 
 	i = 0;
-	if (start >= ft_strlen(s) || s[0] == '\0')
+	if (s == NULL)
 	{
-		return ("");
+		return (NULL);
 	}
 	else
 	{
@@ -41,13 +41,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 			return (NULL);
 		else
 		{
+			if (start >= ft_strlen(s))
+			{
+				sub_str = "";
+				return (sub_str);
+			}
 			while (i < len)
 			{
 				sub_str[i] = s[start + i];
 				i++;
 			}
 			sub_str[i] = '\0';
-			return (sub_str);
 		}
 	}
+	return (sub_str);
 }

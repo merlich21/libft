@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 20:32:53 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/12 21:21:27 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/17 18:34:13 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,13 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 	size_t	len_dst;
 
+	i = 0;
 	len_dst = ft_strlen(dst);
-	if ((dstsize != 0) && (ft_strlen(src) <= dstsize))
+	while ((src[i] != '\0') && (len_dst + i < dstsize - 1))
 	{
-		i = 0;
-		while (src[i] != '\0')
-		{
-			dst[len_dst + i] = src[i];
-			i++;
-		}
-		dst[ft_strlen(dst) + i] = '\0';
-	}	
-	return (ft_strlen(dst));
+		dst[len_dst + i] = src[i];
+		i++;
+	}
+	dst[len_dst + i] = '\0';
+	return (len_dst + ft_strlen(src));
 }

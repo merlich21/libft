@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 15:22:42 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/16 20:56:34 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/17 20:12:40 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static size_t	ft_strlen(const char *s)
 char	*ft_strjoin(char const	*s1, char const	*s2)
 {
 	size_t	i;
-	size_t	j;
 	char	*new_str;
 
 	i = 0;
-	j = 0;
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	new_str = malloc(ft_strlen(s1) + ft_strlen(s2));
 	if (NULL == new_str)
 		return (NULL);
@@ -42,11 +42,11 @@ char	*ft_strjoin(char const	*s1, char const	*s2)
 			new_str[i] = s1[i];
 			i++;
 		}
-		while (s2[j] != '\0')
+		while (*s2 != '\0')
 		{
-			new_str[i] = s2[j];
+			new_str[i] = *s2;
 			i++;
-			j++;
+			s2++;
 		}
 		new_str[i] = '\0';
 		return (new_str);

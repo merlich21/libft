@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 19:50:30 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/16 11:41:00 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/17 14:16:57 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,27 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t		i;
 	size_t		j;
-	size_t		slen;
+	size_t		len_needle;
 	char		*ptr;
 
 	i = 0;
 	j = 0;
-	slen = ft_strlen(needle);
+	len_needle = ft_strlen(needle);
 	ptr = NULL;
-	while ((haystack[i] != '\0') && (i < len) && (needle[j] != '\0') && (slen))
+	if (len_needle == 0)
+		return ((char *)(haystack));
+	while ((i < len) && (haystack[i] != '\0'))
 	{
-		if (needle[j] == haystack[i])
-		{
-			ptr = (char *) haystack + i;
+		if (haystack[i] == needle[j])
 			j++;
-		}
 		else
 			j = 0;
 		i++;
+		if (j == len_needle)
+		{
+			ptr = (char *)(haystack + i - len_needle);
+			break ;
+		}
 	}
-	if (slen == 0)
-		ptr = ((char *)(haystack));
-	else if ((slen != 0) && (j == slen))
-		ptr = ptr - slen + 1;
 	return (ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 19:37:47 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/15 20:22:51 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/17 20:30:23 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	unsigned int	i;
 
 	i = 0;
+	if ((s == 0) || (f == 0))
+	{
+		return ;
+	}
 	while (s[i] != '\0')
 	{
 		f(i, s + i);

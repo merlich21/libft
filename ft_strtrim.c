@@ -6,15 +6,15 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:16:03 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/16 14:15:50 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/17 20:30:52 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static size_t	ft_strlen(char const	*s);
-static size_t	ft_trim_begin(char const	*s1, char const	*set);
-static size_t	ft_trim_end(char const	*s1, char const	*set);
+static size_t	ft_strlen(char const *s);
+static void		ft_trim_begin(char const *s1, char const *set, size_t *min);
+static void		ft_trim_end(char const *s1, char const *set, size_t *max);
 
 char	*ft_strtrim(char const	*s1, char const	*set)
 {
@@ -24,15 +24,17 @@ char	*ft_strtrim(char const	*s1, char const	*set)
 	size_t	n;
 
 	min = 0;
-	max = 0;
+	if (s1 == NULL || set == NULL)
+		return (NULL);
+	max = ft_strlen(s1) - 1;
 	n = 0;
-	trim_str = malloc(ft_strlen(s1));
+	trim_str = malloc(ft_strlen(s1) + 1);
 	if (NULL == trim_str)
 		return (NULL);
 	else
 	{
-		min = ft_trim_begin(s1, set);
-		max = ft_trim_end(s1, set);
+		ft_trim_begin(s1, set, &min);
+		ft_trim_end(s1, set, &max);
 		while (min <= max)
 		{
 			trim_str[n] = s1[min];
@@ -56,15 +58,13 @@ static size_t	ft_strlen(char const	*s)
 	return (i);
 }
 
-static size_t	ft_trim_begin(char const	*s1, char const	*set)
+static void	ft_trim_begin(char const *s1, char const *set, size_t *min)
 {
 	size_t	i;	
 	size_t	j;
-	size_t	min;
 
 	i = 0;
 	j = 0;
-	min = 0;
 	while ((s1[i] != '\0') && (j != ft_strlen(set)))
 	{
 		j = 0;
@@ -72,25 +72,23 @@ static size_t	ft_trim_begin(char const	*s1, char const	*set)
 		{
 			if (s1[i] == set[j])
 			{
-				min++;
+				*min = *min + 1;
 				break ;
 			}
 			j++;
 		}
 		i++;
 	}
-	return (min);
+	return ;
 }
 
-static size_t	ft_trim_end(char const	*s1, char const	*set)
+static void	ft_trim_end(char const	*s1, char const	*set, size_t *max)
 {
 	size_t	i;	
 	size_t	j;
-	size_t	max;
 
 	i = ft_strlen(s1) - 1;
 	j = 0;
-	max = i;
 	while ((i >= 0) && (j != ft_strlen(set)))
 	{
 		j = 0;
@@ -98,12 +96,12 @@ static size_t	ft_trim_end(char const	*s1, char const	*set)
 		{
 			if (s1[i] == set[j])
 			{
-				max--;
+				*max = *max - 1;
 				break ;
 			}
 			j++;
 		}
 		i--;
 	}
-	return (max);
+	return ;
 }
