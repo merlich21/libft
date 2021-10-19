@@ -6,23 +6,11 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:26:46 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/19 20:47:59 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/19 23:24:22 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-static size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

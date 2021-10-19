@@ -6,26 +6,11 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/15 13:02:07 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/16 21:40:01 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/19 23:30:38 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-static void	*ft_memset(void *s, int c, size_t n)
-{
-	size_t	i;
-	char	*s1;
-
-	i = 0;
-	s1 = (char *) s;
-	while (i < n)
-	{
-		s1[i] = c;
-		i++;
-	}
-	return (s);
-}
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {

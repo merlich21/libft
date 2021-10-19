@@ -6,23 +6,11 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:16:03 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/19 22:05:04 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/19 23:24:14 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-static size_t	ft_strlen(char const *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
+#include "libft.h"
 
 static void	ft_trim_begin(char const *s1, char const *set, size_t *min)
 {
