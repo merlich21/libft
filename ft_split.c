@@ -6,43 +6,11 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 12:05:58 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/17 20:40:42 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/19 19:00:05 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
-static size_t	ft_strlen(char const *s);
-static char		*ft_left(char const *s, size_t index);
-static char		*ft_right(char const *s, size_t index);
-
-char	**ft_split(char const *s, char c)
-{
-	size_t	ind;
-	char	**tab;
-
-	ind = 0;
-	if (NULL == s)
-	{
-		return (NULL);
-	}
-	tab = (char **)malloc(ft_strlen(s) + 2 + sizeof(NULL));
-	if (NULL == tab)
-	{
-		return (NULL);
-	}
-	else
-	{
-		while (s[ind] != c)
-		{
-			ind++;
-		}
-		tab[0] = ft_left(s, ind);
-		tab[1] = ft_right(s, ind);
-		tab[2] = NULL;
-		return (tab);
-	}
-}
 
 static size_t	ft_strlen(char const *s)
 {
@@ -56,49 +24,108 @@ static size_t	ft_strlen(char const *s)
 	return (i);
 }
 
-static char	*ft_left(char const *s, size_t index)
+static size_t	ft_char_counter(char const *s, char c)
+{	
+	size_t	i;
+	size_t	counter;
+
+	i = 0;
+	counter = 0;
+	while (s[i] != '\0')
+	{
+		if ((s[i] == c) && (s[i + 1] != c))
+		{
+			counter++;
+		}
+		i++;
+	}
+	return (counter);
+}
+
+static void	ft_search(char const *s, char c, size_t *start, size_t *index)
+{
+	//start = 0;
+	while ((*start < ft_strlen(s)) && (s[*start] != c))
+	{
+		*start = *start + 1;
+	}
+	*index = *start;
+	while ((*index < ft_strlen(s)) && (s[*index + 1] == c))
+	{
+		*index = *index + 1;
+	}
+	return ;
+}
+
+static char	*ft_left(char const *s, size_t start)
 {
 	size_t	k;
 	char	*left;
 
 	k = 0;
-	left = (char *)malloc(index + 1);
+	left = (char *)malloc(ft_strlen(s) - start);
 	if (NULL == left)
 	{
 		return (NULL);
 	}
-	else
+	while (k < start)
 	{
-		while (k < index)
-		{
-			left[k] = s[k];
-			k++;
-		}
-		left[k] = '\0';
-		return (left);
+		left[k] = s[k];
+		k++;
 	}
+	left[k] = '\0';
+	return (left);
 }
 
-static char	*ft_right(char const *s, size_t index)
+char	**ft_split(char const *s, char c)
 {
-	size_t	n;
-	char	*right;
+	size_t	i;
+	size_t	j;
+	size_t	start;
+	size_t	index;
+	size_t	count;
+	char	**tab;
+	char	*tmp;
 
-	n = 0;
-	right = (char *)malloc( - index);
-	if (NULL == right)
-	{
+	i = 0;
+	j = 0;
+	start = 0;
+	index = 0;
+	if (NULL == s)
 		return (NULL);
-	}
+	tmp = (char *) s;	
+	count = ft_char_counter(s, c);
+	tab = (char **)malloc((count + 1) * sizeof(char *) + sizeof(NULL));
+	if (NULL == tab)
+		return (NULL);
 	else
-	{
-		while (index + 1 < ft_strlen(s))
+	{	
+		while ((i <= count) && (index < ft_strlen(tmp)))
 		{
-			right[n] = s[index + 1];
-			n++;
+			while ((tmp == s + j) && (tmp[0] == c))
+			{
+				tmp = tmp + 1;
+				if (j == 0)
+					count = count - 1;
+				j++;
+				if (j == ft_strlen(s))
+					return (NULL);
+			}
+			ft_search(tmp, c, &start, &index);
+			tab[i] = ft_left(tmp, start);
 			index++;
+			//start = index;
+		//	if 
+			//{
+			tmp = tmp + index;
+			start = 0;
+			index = 0;
+			//	i++;
+			//	break ;
+		//	}
+			 i++;
 		}
-		right[n] = '\0';
-		return (right);
+		tab[i] = NULL;
+		return (tab);
 	}
 }

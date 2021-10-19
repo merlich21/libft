@@ -17,7 +17,7 @@ RM = rm -f
 .c.o:
 			${CLANG} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}: 	${OBJS}
+$(NAME): 	${OBJS}
 			ar rc ${NAME} ${OBJS}
 			ranlib ${NAME}
 
