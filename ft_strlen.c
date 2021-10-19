@@ -6,11 +6,11 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 20:03:36 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/12 11:03:01 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/19 23:57:52 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {
