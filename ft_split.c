@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 12:05:58 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/19 19:00:05 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/19 21:44:44 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static size_t	ft_char_counter(char const *s, char c)
 
 static void	ft_search(char const *s, char c, size_t *start, size_t *index)
 {
-	//start = 0;
 	while ((*start < ft_strlen(s)) && (s[*start] != c))
 	{
 		*start = *start + 1;
@@ -93,7 +92,7 @@ char	**ft_split(char const *s, char c)
 	index = 0;
 	if (NULL == s)
 		return (NULL);
-	tmp = (char *) s;	
+	tmp = (char *) s;
 	count = ft_char_counter(s, c);
 	tab = (char **)malloc((count + 1) * sizeof(char *) + sizeof(NULL));
 	if (NULL == tab)
@@ -109,21 +108,18 @@ char	**ft_split(char const *s, char c)
 					count = count - 1;
 				j++;
 				if (j == ft_strlen(s))
-					return (NULL);
+				{
+					tab[0] = NULL;
+					return (tab);
+				}
 			}
 			ft_search(tmp, c, &start, &index);
 			tab[i] = ft_left(tmp, start);
 			index++;
-			//start = index;
-		//	if 
-			//{
 			tmp = tmp + index;
 			start = 0;
 			index = 0;
-			//	i++;
-			//	break ;
-		//	}
-			 i++;
+			i++;
 		}
 		tab[i] = NULL;
 		return (tab);

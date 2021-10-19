@@ -6,13 +6,14 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:04:27 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/16 16:04:31 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/19 20:08:03 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stdlib.h>
+# include <unistd.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
