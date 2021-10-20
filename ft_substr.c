@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:26:46 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/20 14:27:41 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/20 19:56:57 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*sub_str;
 
 	i = 0;
+	if (NULL == s)
+		return (NULL);
 	sub_str = malloc(len + 1);
 	if (NULL == sub_str)
 		return (NULL);
-	if (*s == '\0')
-	{
-		sub_str = (char *) s;
-	}
-	else if (start >= ft_strlen(s))
+	if ((*s == '\0') || (start >= ft_strlen(s)))
 	{
 		*sub_str = '\0';
 	}

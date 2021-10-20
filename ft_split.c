@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 12:05:58 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/20 17:12:37 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/20 21:12:35 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,41 @@ static size_t	ft_search(char *s, char c, size_t *index)
 	return (start);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**ft_action(char **tab, char *tmp, char c, size_t count)
 {
 	size_t	i;
 	size_t	index;
+
+	i = 0;
+	index = 0;
+	while ((index < ft_strlen(tmp)) && (i < count + 1))
+	{
+		tab[i] = ft_substr(tmp, 0, ft_search(tmp, c, &index));
+		if (NULL == tab[i])
+		{
+			while (i > 0)
+			{
+				free(tab[i]);
+				i--;
+			}
+			free(tab[0]);
+			free(tab);
+			return (0);
+		}
+		tmp = tmp + index;
+		index = 0;
+		i++;
+	}
+	tab[i] = NULL;
+	return (tab);
+}
+
+char	**ft_split(char const *s, char c)
+{
 	size_t	count;
 	char	**tab;
 	char	*tmp;
 
-	i = 0;
-	index = 0;
 	if (NULL == s)
 		return (NULL);
 	tmp = ft_strtrim(s, &c);
@@ -64,13 +89,6 @@ char	**ft_split(char const *s, char c)
 	tab = (char **)malloc((count + 1) * sizeof(char *) + sizeof(NULL));
 	if (NULL == tab)
 		return (NULL);
-	while ((index < ft_strlen(tmp)) && (i < count + 1))
-	{
-		tab[i] = ft_substr(tmp, 0, ft_search(tmp, c, &index));
-		tmp = tmp + index;
-		index = 0;
-		i++;
-	}
-	tab[i] = NULL;
+	tab = ft_action(tab, tmp, c, count);
 	return (tab);
 }
