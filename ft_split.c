@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 12:05:58 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/19 23:28:44 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/20 17:12:37 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,86 +30,47 @@ static size_t	ft_char_counter(char const *s, char c)
 	return (counter);
 }
 
-static void	ft_search(char const *s, char c, size_t *start, size_t *index)
+static size_t	ft_search(char *s, char c, size_t *index)
 {
-	while ((*start < ft_strlen(s)) && (s[*start] != c))
+	size_t	start;
+
+	start = 0;
+	while ((start < ft_strlen(s)) && (s[start] != c))
 	{
-		*start = *start + 1;
+		start = start + 1;
 	}
-	*index = *start;
-	while ((*index < ft_strlen(s)) && (s[*index + 1] == c))
+	*index = start;
+	while ((*index < ft_strlen(s)) && (s[*index] == c))
 	{
 		*index = *index + 1;
 	}
-	return ;
-}
-
-static char	*ft_left(char const *s, size_t start)
-{
-	size_t	k;
-	char	*left;
-
-	k = 0;
-	left = (char *)malloc(ft_strlen(s) - start);
-	if (NULL == left)
-	{
-		return (NULL);
-	}
-	while (k < start)
-	{
-		left[k] = s[k];
-		k++;
-	}
-	left[k] = '\0';
-	return (left);
+	return (start);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
-	size_t	j;
-	size_t	start;
 	size_t	index;
 	size_t	count;
 	char	**tab;
 	char	*tmp;
 
 	i = 0;
-	j = 0;
-	start = 0;
 	index = 0;
 	if (NULL == s)
 		return (NULL);
-	tmp = (char *) s;
+	tmp = ft_strtrim(s, &c);
 	count = ft_char_counter(s, c);
 	tab = (char **)malloc((count + 1) * sizeof(char *) + sizeof(NULL));
 	if (NULL == tab)
 		return (NULL);
-	else
-	{	
-		while ((i <= count) && (index < ft_strlen(tmp)))
-		{
-			while ((tmp == s + j) && (tmp[0] == c))
-			{
-				tmp = tmp + 1;
-				if (j == 0)
-					count = count - 1;
-				j++;
-				if (j == ft_strlen(s))
-				{
-					tab[0] = NULL;
-					return (tab);
-				}
-			}
-			ft_search(tmp, c, &start, &index);
-			tab[i] = ft_left(tmp, start);
-			index++;
-			tmp = tmp + index;
-			start = 0;
-			index = 0;
-			i++;
-		}
-		tab[i] = NULL;
-		return (tab);
+	while ((index < ft_strlen(tmp)) && (i < count + 1))
+	{
+		tab[i] = ft_substr(tmp, 0, ft_search(tmp, c, &index));
+		tmp = tmp + index;
+		index = 0;
+		i++;
 	}
+	tab[i] = NULL;
+	return (tab);
 }

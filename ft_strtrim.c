@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:16:03 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/20 00:37:12 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/20 14:26:36 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	char	*trim_str;
 	size_t	min;
 	size_t	max;
-	size_t	n;
 
 	min = 0;
 	if (NULL == s1 || NULL == set)
@@ -73,7 +72,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	}
 	max = ft_strlen(s1) - 1;
-	n = 0;
 	ft_trim_begin(s1, set, &min);
 	ft_trim_end(s1, set, &max);
 	if (min > max)
