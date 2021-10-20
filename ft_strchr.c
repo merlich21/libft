@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 21:47:23 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/19 23:28:15 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/20 23:16:29 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strchr(const char *s, int c)
 	r = NULL;
 	while (i <= ft_strlen(s))
 	{
-		if (s[i] == c)
+		if ((unsigned char) s[i] == (unsigned char) c)
 		{
 			r = (char *)s + i;
 			return (r);
