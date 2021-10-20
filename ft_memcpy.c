@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 12:51:46 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/16 21:56:38 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/20 21:30:47 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	char		*dest1;
 
 	i = 0;
-	src1 = (const char *)src;
-	dest1 = (char *)dst;
+	src1 = (const char *) src;
+	dest1 = (char *) dst;
 	if (!(NULL == src && NULL == dst))
 	{
 		while (i < n)
