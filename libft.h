@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 16:04:27 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/21 00:41:50 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/21 17:43:42 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <errno.h>
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}				t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
