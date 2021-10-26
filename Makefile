@@ -31,20 +31,20 @@ RM = rm -f
 .c.o:
 			${CLANG} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-$(NAME): 	${OBJS}
+$(NAME): 	${OBJS} ${HEADER}
 			ar rcs ${NAME} ${OBJS} ${HEADER}
 
-$(BONUS):	${OBJS_BONUS}
-			ar rcs ${NAME} ${OBJS_BONUS} ${HEADER}
+$(BONUS):	
+			@make OBJS="$(OBJS) $(OBJS_BONUS)" all
 
 all:		${NAME}
 
 clean:		
-			${RM} ${OBJS}
+			${RM} ${OBJS} $(OBJS_BONUS)
 
 fclean:		clean
 			${RM} ${NAME}
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re bonus
