@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 16:36:08 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/24 19:41:49 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/26 19:07:46 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	del(lst->content);
-	free(lst);
+	if ((NULL != lst) && (NULL != del))
+	{
+		del(lst->content);
+		free(lst);
+	}
 }

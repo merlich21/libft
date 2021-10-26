@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 17:07:15 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/26 14:34:36 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/26 19:06:46 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*new_elem;
 	t_list	*tmp;
 
-	if ((NULL != f) && (NULL != del))
+	if (NULL != lst)
 	{
 		new_elem = ft_lstnew(f(lst->content));
 		if (NULL == new_elem)
