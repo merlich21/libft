@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 12:05:58 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/21 17:08:45 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/26 17:00:26 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,10 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	tmp = ft_strtrim(s, &c);
 	if (NULL == tmp)
+	{
+		free(tmp);
 		return (NULL);
+	}
 	count = ft_char_counter(tmp, c);
 	tab = (char **)malloc(sizeof(char *) * (count + 2));
 	if (NULL == tab)

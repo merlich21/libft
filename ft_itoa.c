@@ -6,7 +6,7 @@
 /*   By: merlich <merlich@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 18:51:08 by merlich           #+#    #+#             */
-/*   Updated: 2021/10/16 19:44:16 by merlich          ###   ########.fr       */
+/*   Updated: 2021/10/26 17:05:57 by merlich          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	ft_int_len(int n)
 {
 	int	i;
 
+	i = 0;
 	if (n < 0)
 		i = 2;
 	else
